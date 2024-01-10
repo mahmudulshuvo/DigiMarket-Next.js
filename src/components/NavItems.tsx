@@ -14,9 +14,17 @@ const NavItems = () => {
                 setActiveIndex(null)
             }
         }
+        const handleKeydown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setActiveIndex(null)
+            }
+        }
         document.addEventListener("click", handleClick)
+        document.addEventListener("keydown", handleKeydown)
+
         return () => {
             document.removeEventListener("click", handleClick)
+            document.addEventListener("keydown", handleKeydown)
         }
     })
 

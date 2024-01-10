@@ -2,6 +2,10 @@ import Link from "next/link"
 import MaxWidthWrapper from "./MaxWidthWrapper"
 import { Icons } from "./Icons"
 import NavItems from "./NavItems"
+import { buttonVariants } from "./ui/button"
+import Cart from "./Cart"
+
+const user = null
 
 const Navbar = () => {
     return (
@@ -20,37 +24,53 @@ const Navbar = () => {
                                 <NavItems />
                             </div>
 
-                            {/* <div className="flex-shrink-0">
-                                <a href="/">
-                                    <img
-                                        className="block h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg"
-                                        alt="Workflow"
-                                    />
-                                </a>
+                            <div className="ml-auto flex items-center">
+                                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                                    {user ? null : (
+                                        <Link
+                                            href="/sign-in"
+                                            className={buttonVariants({
+                                                variant: "ghost",
+                                            })}
+                                        >
+                                            Sign in
+                                        </Link>
+                                    )}
+                                    {user ? null : (
+                                        <span
+                                            className="h-6 w-px bg-gray-200"
+                                            aria-hidden="true"
+                                        />
+                                    )}
+                                    {user ? null : (
+                                        <Link
+                                            href="/sign-up"
+                                            className={buttonVariants({
+                                                variant: "ghost",
+                                            })}
+                                        >
+                                            Create account
+                                        </Link>
+                                    )}
+                                    {user ? (
+                                        <span
+                                            className="h-6 w-px bg-gray-200"
+                                            aria-hidden="true"
+                                        />
+                                    ) : null}
+                                    {user ? null : (
+                                        <div className="flex lg:ml-6">
+                                            <span
+                                                className="h-6 w-px bg-gray-200"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                    )}
+                                    <div className="ml-4 flow-root lg:ml-6">
+                                        <Cart />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="hidden md:block md:ml-10 md:space-x-10">
-                                <a
-                                    href="/products"
-                                    className="font-medium text-gray-500 hover:text-gray-900"
-                                >
-                                    Products
-                                </a>
-
-                                <a
-                                    href="/about"
-                                    className="font-medium text-gray-500 hover:text-gray-900"
-                                >
-                                    About
-                                </a>
-
-                                <a
-                                    href="/contact"
-                                    className="font-medium text-gray-500 hover:text-gray-900"
-                                >
-                                    Contact
-                                </a>
-                            </div> */}
                         </div>
                     </div>
                 </MaxWidthWrapper>
