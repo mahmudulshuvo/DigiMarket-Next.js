@@ -7,16 +7,18 @@ const NavItems = () => {
     const [activeIndex, setActiveIndex] = useState<null | Number>(null)
     const isAnyOpen = activeIndex !== null
 
-    /* Close all nav items when clicking outside */
-    // useEffect(() => {
-    //     const handleClick = () => {
-    //         setActiveIndex(null)
-    //     }
-    //     window.addEventListener("click", handleClick)
-    //     return () => {
-    //         window.removeEventListener("click", handleClick)
-    //     }
-    // })
+    /* Close all nav items when clicking outside of NavItem */
+    useEffect(() => {
+        const handleClick = () => {
+            if (isAnyOpen) {
+                setActiveIndex(null)
+            }
+        }
+        document.addEventListener("click", handleClick)
+        return () => {
+            document.removeEventListener("click", handleClick)
+        }
+    })
 
     return (
         <div className="flex gap-4 h-full">
@@ -27,6 +29,7 @@ const NavItems = () => {
                     } else {
                         setActiveIndex(index)
                     }
+                    console.log("handleOpen", activeIndex, index)
                 }
                 const isOpen = activeIndex === index
                 return (
